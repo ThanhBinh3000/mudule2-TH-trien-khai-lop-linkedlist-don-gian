@@ -1,0 +1,32 @@
+package com.BinhAn;
+
+import java.util.Arrays;
+
+public class MyList <B>{
+    private int size = 0;
+    private static final int DEFAULT_CAPACITY = 10;
+    private Object elements[];
+
+    public MyList(){
+        elements = new Object[DEFAULT_CAPACITY];
+    }
+
+    private void ensureCapa(){
+        int newSize = elements.length *2;
+        elements = Arrays.copyOf(elements, newSize);
+    }
+
+    public void add(B b){
+        if (size == elements.length){
+            ensureCapa();
+        }
+        elements[size++] = b;
+    }
+
+    public B get(int i){
+        if (i>=size|| i<0){
+            throw new IndexOutOfBoundsException("index: " + i + ",Size" + i);
+        }
+        return (B) elements[i];
+    }
+}
